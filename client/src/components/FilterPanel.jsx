@@ -22,7 +22,8 @@ const FilterPanel = ({ onFilterChange }) => {
   const loadNeighbourhoods = async () => {
     try {
       const response = await heritageSiteAPI.getNeighbourhoods();
-      setNeighbourhoods(response.data.data);
+      const neighbourhoodPayload = response?.data?.data;
+      setNeighbourhoods(Array.isArray(neighbourhoodPayload) ? neighbourhoodPayload : []);
     } catch (error) {
       // Silently fail when server is offline - set empty array
       setNeighbourhoods([]);

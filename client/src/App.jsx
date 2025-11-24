@@ -102,7 +102,8 @@ const App = () => {
     try {
       setLoading(true);
       const response = await heritageSiteAPI.getAll(filters);
-      setSites(response.data.data);
+      const sitesPayload = response?.data?.data;
+      setSites(Array.isArray(sitesPayload) ? sitesPayload : []);
     } catch (error) {
       // Silently fail when server is offline - set empty array
       setSites([]);
