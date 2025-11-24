@@ -1,7 +1,7 @@
 {
-  "name": "van-heritage",
+  "name": "vancouver-heritage-server",
   "version": "1.0.0",
-  "description": "",
+  "description": "Backend for the Vancouver Heritage Interactive Map",
   "main": "index.js",
   "type": "module",
   "scripts": {

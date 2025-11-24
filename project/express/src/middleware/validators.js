@@ -82,4 +82,3 @@ export const siteIdParamRules = [
 export const heritageIdParamRules = [
   param("id").isMongoId().withMessage("Invalid heritage site id"),
 ];
-
