@@ -1,14 +1,12 @@
 import Favorite from "../models/Favorite.js";
 import HeritageSite from "../models/HeritageSite.js";
 
-// @desc    Toggle favorite (add or remove)
-// @route   POST /api/favorites/:siteId
-// @access  Private
+
 export const toggleFavorite = async (req, res) => {
   try {
     const { siteId } = req.params;
 
-    // Check if site exists
+
     const site = await HeritageSite.findById(siteId);
     if (!site) {
       return res.status(404).json({
@@ -17,14 +15,13 @@ export const toggleFavorite = async (req, res) => {
       });
     }
 
-    // Check if already favorited
+
     const existingFavorite = await Favorite.findOne({
       user: req.user._id,
       heritageSite: siteId,
     });
 
     if (existingFavorite) {
-      // Remove favorite
       await existingFavorite.deleteOne();
       return res.status(200).json({
         success: true,
@@ -32,7 +29,6 @@ export const toggleFavorite = async (req, res) => {
         isFavorited: false,
       });
     } else {
-      // Add favorite
       await Favorite.create({
         user: req.user._id,
         heritageSite: siteId,
@@ -51,9 +47,7 @@ export const toggleFavorite = async (req, res) => {
   }
 };
 
-// @desc    Get user's favorites
-// @route   GET /api/favorites
-// @access  Private
+
 export const getUserFavorites = async (req, res) => {
   try {
     const favorites = await Favorite.find({ user: req.user._id })
@@ -73,9 +67,6 @@ export const getUserFavorites = async (req, res) => {
   }
 };
 
-// @desc    Check if site is favorited
-// @route   GET /api/favorites/:siteId/check
-// @access  Private
 export const checkFavorite = async (req, res) => {
   try {
     const { siteId } = req.params;
@@ -97,9 +88,7 @@ export const checkFavorite = async (req, res) => {
   }
 };
 
-// @desc    Get favorite count for a site
-// @route   GET /api/favorites/:siteId/count
-// @access  Public
+
 export const getFavoriteCount = async (req, res) => {
   try {
     const { siteId } = req.params;
