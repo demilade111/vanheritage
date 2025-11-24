@@ -21,8 +21,8 @@ const router = express.Router();
 router.post(
   "/",
   protect,
-  validate(createMemoryRules),
   upload.single("image"),
+  validate(createMemoryRules),
   createMemory
 );
 router.get("/my-memories", protect, getUserMemories);
@@ -30,8 +30,8 @@ router.get("/site/:siteId", validate(siteIdParamRules), getSiteMemories);
 router.put(
   "/:id",
   protect,
-  validate(updateMemoryRules),
   upload.single("image"),
+  validate(updateMemoryRules),
   updateMemory
 );
 router.delete("/:id", protect, validate(memoryIdParamRules), deleteMemory);
