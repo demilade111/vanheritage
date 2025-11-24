@@ -1,8 +1,7 @@
 import axios from "axios";
 
-
-
-const apiBaseUrl = "http://localhost:5001/api";
+const apiBaseUrl =
+  process.env.API_BASE_URL || "http://localhost:5001/api";
 
 const api = axios.create({
   baseURL: apiBaseUrl,
