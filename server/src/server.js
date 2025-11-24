@@ -33,9 +33,7 @@ app.use("/api/memories", memoryRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/favorites", favoriteRoutes);
 
-
 app.use(express.static(clientBuildPath));
-
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(clientBuildPath, "index.html"));
