@@ -1,9 +1,8 @@
 import axios from "axios";
 
-const apiBaseUrl =
-  process?.env?.API_BASE_URL && process.env.API_BASE_URL.length
-    ? process.env.API_BASE_URL
-    : "/api";
+
+
+const apiBaseUrl = "http://localhost:5001/api";
 
 const api = axios.create({
   baseURL: apiBaseUrl,
@@ -54,13 +53,6 @@ export const memoryAPI = {
   delete: (id) => api.delete(`/memories/${id}`),
   getMyMemories: () => api.get("/memories/my-memories"),
   getSiteMemories: (siteId) => api.get(`/memories/site/${siteId}`),
-};
-
-export const favoriteAPI = {
-  toggle: (siteId) => api.post(`/favorites/${siteId}`),
-  getUserFavorites: () => api.get("/favorites"),
-  checkFavorite: (siteId) => api.get(`/favorites/${siteId}/check`),
-  getCount: (siteId) => api.get(`/favorites/${siteId}/count`),
 };
 
 export default api;

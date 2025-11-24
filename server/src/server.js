@@ -7,7 +7,6 @@ import connectDb from "./config/db.js";
 import authRoutes from "./routes/auth.js";
 import heritageSiteRoutes from "./routes/heritageSites.js";
 import memoryRoutes from "./routes/memories.js";
-import favoriteRoutes from "./routes/favorites.js";
 
 dotenv.config();
 
@@ -27,7 +26,6 @@ app.get("/", (req, res) => {
 app.use("/api/auth", authRoutes);
 app.use("/api/heritage-sites", heritageSiteRoutes);
 app.use("/api/memories", memoryRoutes);
-app.use("/api/favorites", favoriteRoutes);
 
 app.use(express.static(clientBuildPath));
 

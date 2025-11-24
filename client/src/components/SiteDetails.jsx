@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { heritageSiteAPI, favoriteAPI } from "../services/api";
+import { heritageSiteAPI } from "../services/api";
 import { useAuth } from "../context/AuthContext";
 import MemoryForm from "./MemoryForm";
 import {
-  HiHeart,
-  HiOutlineHeart,
   HiLocationMarker,
   HiGlobe,
   HiCalendar,
@@ -25,8 +23,6 @@ const SiteDetails = ({ site, onClose, onMemoryAdded }) => {
   const [photo, setPhoto] = useState(null);
   const [loading, setLoading] = useState(true);
   const [showMemoryForm, setShowMemoryForm] = useState(false);
-  const [isFavorited, setIsFavorited] = useState(false);
-  const [favoriteCount, setFavoriteCount] = useState(0);
 
   useEffect(() => {
     loadSiteDetails();
@@ -38,12 +34,7 @@ const SiteDetails = ({ site, onClose, onMemoryAdded }) => {
       const promises = [
         heritageSiteAPI.getOne(site._id),
         heritageSiteAPI.getPhoto(site._id),
-        favoriteAPI.getCount(site._id),
       ];
-
-      if (isAuthenticated) {
-        promises.push(favoriteAPI.checkFavorite(site._id));
-      }
 
       const responses = await Promise.allSettled(promises);
 
@@ -57,32 +48,10 @@ const SiteDetails = ({ site, onClose, onMemoryAdded }) => {
       ) {
         setPhoto(responses[1].value.data.data);
       }
-
-      if (responses[2].status === "fulfilled") {
-        setFavoriteCount(responses[2].value.data.count);
-      }
-
-      if (isAuthenticated && responses[3]?.status === "fulfilled") {
-        setIsFavorited(responses[3].value.data.isFavorited);
-      }
     } catch (error) {
       // Silently fail when server is offline
     } finally {
       setLoading(false);
-    }
-  };
-
-  const handleToggleFavorite = async () => {
-    if (!isAuthenticated) return;
-
-    try {
-      const response = await favoriteAPI.toggle(site._id);
-      setIsFavorited(response.data.isFavorited);
-      setFavoriteCount((prev) =>
-        response.data.isFavorited ? prev + 1 : prev - 1
-      );
-    } catch (error) {
-      console.error("Failed to toggle favorite");
     }
   };
 

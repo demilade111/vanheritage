@@ -1,8 +1,10 @@
 {
   "info": {
+    "_postman_id": "f46363b2-d0e5-4fda-ac21-c41e1ab06af6",
     "name": "Vancouver Heritage API",
-    "description": "Complete API for exploring Vancouver heritage sites with user authentication, memories, favorites, and admin features",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    "description": "Complete API for exploring Vancouver heritage sites with user authentication, memories, and admin features",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "17531144"
   },
   "item": [
     {
@@ -43,11 +45,18 @@
             },
             "url": {
               "raw": "{{base_url}}/api/auth/register",
-              "host": ["{{base_url}}"],
-              "path": ["api", "auth", "register"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "register"
+              ]
             },
             "description": "Register a new user account. Requires username (3+ chars), valid email, and password (6+ chars). Returns JWT token for authentication."
-          }
+          },
+          "response": []
         },
         {
           "name": "Login User",
@@ -84,11 +93,18 @@
             },
             "url": {
               "raw": "{{base_url}}/api/auth/login",
-              "host": ["{{base_url}}"],
-              "path": ["api", "auth", "login"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
             },
             "description": "Login with email and password. Returns JWT token that should be included in Authorization header for protected routes."
-          }
+          },
+          "response": []
         },
         {
           "name": "Get Current User",
@@ -120,11 +136,18 @@
             ],
             "url": {
               "raw": "{{base_url}}/api/auth/me",
-              "host": ["{{base_url}}"],
-              "path": ["api", "auth", "me"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "me"
+              ]
             },
             "description": "Get currently authenticated user's information. Requires valid JWT token in Authorization header."
-          }
+          },
+          "response": []
         }
       ],
       "description": "Endpoints for user authentication and authorization using JWT tokens"
@@ -160,8 +183,13 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/api/heritage-sites?withImages=true&neighbourhood=&yearBuilt=",
-              "host": ["{{base_url}}"],
-              "path": ["api", "heritage-sites"],
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "heritage-sites"
+              ],
               "query": [
                 {
                   "key": "withImages",
@@ -181,7 +209,8 @@
               ]
             },
             "description": "Get all heritage sites with optional filters. Returns array of sites with coordinates, names, addresses, and historical information."
-          }
+          },
+          "response": []
         },
         {
           "name": "Get Single Heritage Site",
@@ -209,8 +238,14 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/api/heritage-sites/:siteId",
-              "host": ["{{base_url}}"],
-              "path": ["api", "heritage-sites", ":siteId"],
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "heritage-sites",
+                ":siteId"
+              ],
               "variable": [
                 {
                   "key": "siteId",
@@ -220,7 +255,8 @@
               ]
             },
             "description": "Get detailed information about a specific heritage site including description, history, architectural style, and all associated memories."
-          }
+          },
+          "response": []
         },
         {
           "name": "Get Site Photo",
@@ -242,8 +278,15 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/api/heritage-sites/:siteId/photo",
-              "host": ["{{base_url}}"],
-              "path": ["api", "heritage-sites", ":siteId", "photo"],
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "heritage-sites",
+                ":siteId",
+                "photo"
+              ],
               "variable": [
                 {
                   "key": "siteId",
@@ -253,7 +296,8 @@
               ]
             },
             "description": "Get Google Places photo for a heritage site. Returns photo URL if available, otherwise 404."
-          }
+          },
+          "response": []
         },
         {
           "name": "Get Neighbourhoods",
@@ -280,11 +324,19 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/api/heritage-sites/filters/neighbourhoods",
-              "host": ["{{base_url}}"],
-              "path": ["api", "heritage-sites", "filters", "neighbourhoods"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "heritage-sites",
+                "filters",
+                "neighbourhoods"
+              ]
             },
             "description": "Get list of all unique neighbourhoods in Vancouver that contain heritage sites. Used for filtering."
-          }
+          },
+          "response": []
         }
       ],
       "description": "Endpoints for retrieving Vancouver heritage site data including locations, historical information, and filtering"
@@ -331,11 +383,17 @@
             },
             "url": {
               "raw": "{{base_url}}/api/memories",
-              "host": ["{{base_url}}"],
-              "path": ["api", "memories"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "memories"
+              ]
             },
             "description": "Create a new memory/story for a heritage site. Requires authentication. Story must be 10-2000 characters. Image is optional."
-          }
+          },
+          "response": []
         },
         {
           "name": "Get User's Memories",
@@ -367,11 +425,18 @@
             ],
             "url": {
               "raw": "{{base_url}}/api/memories/my-memories",
-              "host": ["{{base_url}}"],
-              "path": ["api", "memories", "my-memories"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "memories",
+                "my-memories"
+              ]
             },
             "description": "Get all memories created by the authenticated user. Returns memories with associated heritage site information."
-          }
+          },
+          "response": []
         },
         {
           "name": "Get Site Memories",
@@ -393,8 +458,15 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/api/memories/site/:siteId",
-              "host": ["{{base_url}}"],
-              "path": ["api", "memories", "site", ":siteId"],
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "memories",
+                "site",
+                ":siteId"
+              ],
               "variable": [
                 {
                   "key": "siteId",
@@ -404,7 +476,8 @@
               ]
             },
             "description": "Get all memories for a specific heritage site. Public endpoint, returns memories with user information."
-          }
+          },
+          "response": []
         },
         {
           "name": "Update Memory",
@@ -444,8 +517,14 @@
             },
             "url": {
               "raw": "{{base_url}}/api/memories/:memoryId",
-              "host": ["{{base_url}}"],
-              "path": ["api", "memories", ":memoryId"],
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "memories",
+                ":memoryId"
+              ],
               "variable": [
                 {
                   "key": "memoryId",
@@ -455,7 +534,8 @@
               ]
             },
             "description": "Update an existing memory. Requires authentication and must be the memory owner. Can update title, story, and imageUrl."
-          }
+          },
+          "response": []
         },
         {
           "name": "Delete Memory",
@@ -482,8 +562,14 @@
             ],
             "url": {
               "raw": "{{base_url}}/api/memories/:memoryId",
-              "host": ["{{base_url}}"],
-              "path": ["api", "memories", ":memoryId"],
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "memories",
+                ":memoryId"
+              ],
               "variable": [
                 {
                   "key": "memoryId",
@@ -493,228 +579,11 @@
               ]
             },
             "description": "Delete a memory. Requires authentication and must be the memory owner. This action cannot be undone."
-          }
+          },
+          "response": []
         }
       ],
       "description": "Endpoints for managing user memories and stories about heritage sites"
-    },
-    {
-      "name": "Favorites",
-      "item": [
-        {
-          "name": "Toggle Favorite",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"Returns favorite status\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  "    pm.expect(jsonData.isFavorited).to.exist;",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{auth_token}}"
-              }
-            ],
-            "url": {
-              "raw": "{{base_url}}/api/favorites/:siteId",
-              "host": ["{{base_url}}"],
-              "path": ["api", "favorites", ":siteId"],
-              "variable": [
-                {
-                  "key": "siteId",
-                  "value": "{{site_id}}",
-                  "description": "MongoDB ObjectId of the heritage site"
-                }
-              ]
-            },
-            "description": "Toggle favorite status for a heritage site. If already favorited, removes it. If not favorited, adds it. Returns new status."
-          }
-        },
-        {
-          "name": "Get User Favorites",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"Returns array of favorite sites\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  "    pm.expect(jsonData.data).to.be.an('array');",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{auth_token}}"
-              }
-            ],
-            "url": {
-              "raw": "{{base_url}}/api/favorites",
-              "host": ["{{base_url}}"],
-              "path": ["api", "favorites"]
-            },
-            "description": "Get all heritage sites favorited by the authenticated user. Returns array of complete site objects."
-          }
-        },
-        {
-          "name": "Check If Favorited",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"Returns favorited status\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  "    pm.expect(jsonData.isFavorited).to.be.a('boolean');",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{auth_token}}"
-              }
-            ],
-            "url": {
-              "raw": "{{base_url}}/api/favorites/:siteId/check",
-              "host": ["{{base_url}}"],
-              "path": ["api", "favorites", ":siteId", "check"],
-              "variable": [
-                {
-                  "key": "siteId",
-                  "value": "{{site_id}}",
-                  "description": "MongoDB ObjectId of the heritage site"
-                }
-              ]
-            },
-            "description": "Check if a specific heritage site is favorited by the authenticated user. Returns boolean status."
-          }
-        },
-        {
-          "name": "Get Favorite Count",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"Returns count\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  "    pm.expect(jsonData.count).to.be.a('number');",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{base_url}}/api/favorites/:siteId/count",
-              "host": ["{{base_url}}"],
-              "path": ["api", "favorites", ":siteId", "count"],
-              "variable": [
-                {
-                  "key": "siteId",
-                  "value": "{{site_id}}",
-                  "description": "MongoDB ObjectId of the heritage site"
-                }
-              ]
-            },
-            "description": "Get total number of users who have favorited a specific heritage site. Public endpoint, no authentication required."
-          }
-        }
-      ],
-      "description": "Endpoints for managing favorite heritage sites (like/unlike functionality)"
-    },
-    {
-      "name": "Admin",
-      "item": [
-        {
-          "name": "Update Heritage Site",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "PUT",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{auth_token}}"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"description\": \"This heritage building is a fine example of early 20th century architecture in Vancouver.\",\n  \"history\": \"Built in 1920 by renowned architect John Smith, this building served as the city library for over 50 years.\",\n  \"imageUrl\": \"https://upload.wikimedia.org/wikipedia/commons/example.jpg\",\n  \"year_built\": 1920,\n  \"architecturalStyle\": \"Art Deco\",\n  \"builtBy\": \"John Smith Architects\",\n  \"significance\": \"Designated as a municipal heritage site in 1985 for its architectural and historical significance.\"\n}"
-            },
-            "url": {
-              "raw": "{{base_url}}/api/admin/heritage-sites/:siteId",
-              "host": ["{{base_url}}"],
-              "path": ["api", "admin", "heritage-sites", ":siteId"],
-              "variable": [
-                {
-                  "key": "siteId",
-                  "value": "{{site_id}}",
-                  "description": "MongoDB ObjectId of the heritage site"
-                }
-              ]
-            },
-            "description": "Update heritage site information. Requires authentication. Can update description, history, images, architectural details, and significance."
-          }
-        }
-      ],
-      "description": "Administrative endpoints for managing heritage site data"
     }
   ],
   "variable": [
