@@ -16,7 +16,6 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const clientBuildPath = path.resolve(__dirname, "../../client/dist");
 
-
 connectDb();
 
 app.use(cors());
@@ -32,7 +31,6 @@ app.use("/api/memories", memoryRoutes);
 app.use("/api/favorites", favoriteRoutes);
 
 app.use(express.static(clientBuildPath));
-
 
 app.get("/(.*)", (req, res) => {
   res.sendFile(path.join(clientBuildPath, "index.html"));
